@@ -1,7 +1,7 @@
-from hero import *
-from dragon import *
+from hero import superhero as hr
+from dragon import drakon as dr
 
-class Engine:
+class Engine():
     def __init__(self):
         print("Добро пожаловать на игру \"Герой против Дракона\"")
 
@@ -9,16 +9,16 @@ class Engine:
         if turn % 2 != 0: # при нечётном числе ход за героем
             user = input("Выберите следующее действие: атаковать или пить зелье: ")
             if user == "атаковать":
-                self.hero.attack(self.hero)
+                hr.attack()
             if user == "пить зелье":
-                self.hero.drink_potion(self.hero)
+                hr.drink_potion()
 
         else:
-            self.dragon.attack(self.dragon)
+            dr.attack()
 
         turn += 1
 
-        if self.hero.health(self.hero) == 0:
+        if hr.health() == 0:
             print("Дракон победил")
-        if self.dragon.health(self.dragon) == 0:
+        if dr.health() == 0:
             print("Герой победил")
