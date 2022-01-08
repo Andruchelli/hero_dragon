@@ -1,12 +1,19 @@
-from hero import superhero as hr
+import random
 
 class Dragon:
-    def __init__(self, health):
-        self.health = 5 # здоровье
+    MIN_DMG = 0
+    MAX_DMG = 9
+    MAX_HEALTH = 20
 
-    def attack(self): # атаковать героя
-        receive_damage = hr.receive_damage()
+    def __init__(self):
+        self.health = self.MAX_HEALTH # здоровье
 
-    def receive_damage(self, health = 5): # получить урон от героя
-        self.health -= 1
-drakon = Dragon()
+    def attack(self, hero): # атаковать героя
+        receive_damage = hero.receive_damage(self)
+        print(f"Герой получает {receive_damage} единиц урона.")
+
+    def receive_damage(self, hero): # получить урон от героя
+        dmg = random.randint(hero.MIN_DMG, hero.MAX_DMG)
+        self.health -= dmg
+        return dmg
+
